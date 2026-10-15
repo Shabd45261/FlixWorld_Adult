@@ -1,0 +1,8 @@
+{
+    "name": "Flix World Adult",
+    "description": "Flix World adult sources: OK.XXX videos and FikFap Shorts",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://raw.githubusercontent.com/Shabd45261/FlixWorld_Adult/builds/plugins.json"
+    ]
+}
