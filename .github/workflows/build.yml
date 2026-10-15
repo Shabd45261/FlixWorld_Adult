@@ -39,16 +39,18 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-
-      # AGP tries to auto-download platform 35 / build-tools 35 at build time
-      # and PROMPTS for license acceptance, which stalls with no stdin. Accept
-      # the licenses and install the packages up front instead.
+      # NOTE: we do NOT use android-actions/setup-android. It tries to install
+      # the legacy "tools" package, which Google removed, so it fails with
+      # "Failed to find package 'tools'". The runner already ships an Android
+      # SDK (ANDROID_SDK_ROOT), so we just accept licenses + add our packages.
       - name: Accept Android SDK licenses and install packages
         run: |
-          yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0" > /dev/null
+          SDK="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          SDKMANAGER=$(ls $SDK/cmdline-tools/*/bin/sdkmanager 2>/dev/null | sort -V | tail -n1)
+          echo "SDK=$SDK"
+          echo "SDKMANAGER=$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+          "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0" > /dev/null
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
