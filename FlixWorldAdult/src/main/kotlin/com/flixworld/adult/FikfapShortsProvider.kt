@@ -4,11 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.lagradost.cloudstream3.*
-import com.lagradost.cloudstream3.CloudStreamApp.Companion.getKey
-import com.lagradost.cloudstream3.CloudStreamApp.Companion.setKey
-import com.lagradost.cloudstream3.utils.ExtractorLink
-import com.lagradost.cloudstream3.utils.ExtractorLinkType
-import com.lagradost.cloudstream3.utils.Qualities
+import com.lagradost.cloudstream3.utils.*
 import java.util.UUID
 
 /**
@@ -37,15 +33,9 @@ class FikfapShortsProvider : MainAPI() {
         configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
     }
 
-    private val anon: String
-        get() {
-            val key = "flix_fikfap_anon"
-            val cur = getKey<String>(key)
-            if (!cur.isNullOrBlank()) return cur
-            val v = UUID.randomUUID().toString()
-            setKey(key, v)
-            return v
-        }
+    // Stable for the life of the app process; a fresh UUID just starts a new
+    // anonymous session, which is harmless.
+    private val anon: String by lazy { UUID.randomUUID().toString() }
 
     private fun apiHeaders() = mapOf(
         "User-Agent" to UA,

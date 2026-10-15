@@ -1,8 +1,7 @@
 package com.flixworld.adult
 
-import android.content.Context
+import com.lagradost.cloudstream3.plugins.BasePlugin
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
-import com.lagradost.cloudstream3.plugins.Plugin
 
 /**
  * Flix World — adult extension.
@@ -12,8 +11,8 @@ import com.lagradost.cloudstream3.plugins.Plugin
  * feed.
  */
 @CloudstreamPlugin
-class FlixWorldAdultPlugin : Plugin() {
-    override fun load(context: Context) {
+class FlixWorldAdultPlugin : BasePlugin() {
+    override fun load() {
         registerMainAPI(OkxxxProvider())
         registerMainAPI(FikfapShortsProvider())
     }
