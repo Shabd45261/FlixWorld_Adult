@@ -2,14 +2,14 @@
     {
         "url": "https://raw.githubusercontent.com/Shabd45261/FlixWorld_Adult/builds/FlixWorldAdult.cs3",
         "status": 3,
-        "version": 3,
+        "version": 4,
         "name": "FlixWorldAdult",
         "internalName": "FlixWorldAdult",
         "authors": [
             "FlixWorld"
         ],
         "description": "Flix World adult sources: OK.XXX videos and FikFap Shorts",
-        "fileSize": 32649,
+        "fileSize": 38809,
         "repositoryUrl": "https://github.com/Shabd45261/FlixWorld_Adult",
         "language": "en",
         "tvTypes": [
@@ -17,6 +17,6 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Shabd45261/FlixWorld_Adult/main/assets/adult.png",
         "apiVersion": 1,
-        "fileHash": "sha256-2808fb96f8a05ea1848403266882a6f1b8450b0415aab8d4cae1b384d0c2e77d"
+        "fileHash": "sha256-d8547c3959165fb5100788d70f6fa64df445b42b1728db891898ec20e556b2f5"
     }
 ]
