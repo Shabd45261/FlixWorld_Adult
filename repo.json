@@ -1,0 +1,9 @@
+{
+    "name": "Flix World",
+    "description": "Flix World - adult (OK.XXX + FikFap Shorts) and YouTube (videos + Shorts)",
+    "manifestVersion": 1,
+    "pluginLists": [
+        "https://raw.githubusercontent.com/Shabd45261/FlixWorld_Adult/builds/plugins.json",
+        "https://raw.githubusercontent.com/Shabd45261/FlixWorld_Youtube/builds/plugins.json"
+    ]
+}
